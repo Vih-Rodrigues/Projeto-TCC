@@ -63,7 +63,7 @@ class _TelaLoginState extends State<TelaLogin> {
                 
                 blendMode: BlendMode.dstIn,
                 
-                child: Image.asset("images/image_sagfam.png")
+                child: Image.asset("lib/images/image_sagfam.png")
             ),
           ),
 
