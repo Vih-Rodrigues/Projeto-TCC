@@ -53,17 +53,18 @@ class _TelaLoginState extends State<TelaLogin> {
             
             // Imagem que ocupa a tela de login + sombreamento
             child: ShaderMask( 
-                shaderCallback: (rect) {
-                  return LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [Colors.black, Colors.transparent],
-                  ).createShader(Rect.fromLTRB(0, 0, rect.width, rect.height));
-                },
-                
-                blendMode: BlendMode.dstIn,
-                
-                child: Image.asset("lib/images/image_sagfam.png")
+              shaderCallback: (rect) {
+                return const LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [Colors.white, Colors.transparent],
+                ).createShader(Rect.fromLTRB(0, 0, rect.width, rect.height));
+              },
+
+              // blendMode: BlendMode.overlay,  
+              
+              child: Image.asset("lib/images/image_sagfam.png")
+
             ),
           ),
 
@@ -81,7 +82,16 @@ class _TelaLoginState extends State<TelaLogin> {
                 child: Column(
                   children: [
                     const SizedBox(
-                      height: 300,
+                      height: 25,
+                    ),
+
+                    Text("Bem-Vindo(a)!",
+                    style: TextStyle(
+                      fontSize: 26,
+                    )),
+
+                    const SizedBox(
+                      height: 25,
                     ),
 
                     campoTexto('Usuário', txtUsuario),
@@ -96,8 +106,45 @@ class _TelaLoginState extends State<TelaLogin> {
 
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
-                      children: [botao('Entrar'),]
-                    )
+                      children: [botao('Entrar', 100),]
+                    ),
+
+                    const SizedBox(
+                      height: 10,
+                    ),
+
+                    Row(
+                      children: [
+                        SizedBox(
+                        width: 250,
+                        height: 40,
+
+                        child: ElevatedButton(
+                          onPressed: () {
+
+                            if (formulario1.currentState!.validate()) {
+                              
+                              // Recupera os dados informados pelo usuário
+                              setState(() {
+                                String usuario;
+                                String senha;
+                              });
+                            }
+                          },
+
+                          child: const Text(
+                            "Cadastrar-se", 
+                            style: TextStyle(fontSize: 22,
+                                              color: Color.fromARGB(255, 20, 111, 196))
+                          ),
+
+                          style: ElevatedButton.styleFrom(
+                            primary: Color.fromARGB(255, 255, 255, 255),
+                          ),
+                        ),
+                      )
+                      ]
+                    ),
                   ],
                 ),
               ),
@@ -140,7 +187,6 @@ class _TelaLoginState extends State<TelaLogin> {
               color: Color.fromARGB(126, 82, 82, 82)
             ),
 
-            hintText: 'Informe o login',
             hintStyle: const TextStyle(
               fontSize: 18,
               color: Color.fromARGB(126, 82, 82, 82)
@@ -170,9 +216,9 @@ class _TelaLoginState extends State<TelaLogin> {
   //
   // BOTÃO "ENTRAR"
   //
-  botao(entrar){
+  botao(entrar, largura){
     return SizedBox(
-      width: 100,
+      width: largura,
       height: 40,
 
       child: ElevatedButton(
