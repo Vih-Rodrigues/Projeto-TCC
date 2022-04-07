@@ -46,84 +46,83 @@ class _TelaLoginState extends State<TelaLogin> {
       // COR DE FUNDO
       backgroundColor: Colors.white,
 
+      //
       // BODY
-      body: Column(
-        children:[
-          Center(
-            
-            // Imagem que ocupa a tela de login + sombreamento
-            child: ShaderMask( 
-              shaderCallback: (rect) {
-                return const LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [Colors.white, Colors.transparent],
-                ).createShader(Rect.fromLTRB(0, 0, rect.width, rect.height));
-              },
+      //
+      body: SingleChildScrollView(
+        child: Center (
+          child: Padding ( // Padding = borda, que só pode ter um child
 
-              // blendMode: BlendMode.overlay,  
-              
-              child: Image.asset("lib/images/image_sagfam.png")
+            padding: const EdgeInsets.all(30.0),
 
-            ),
-          ),
+            child: Form(
 
-          Center(
-            child: Padding(
+              // Identificador do form
+              key: formulario1,
 
-              padding: const EdgeInsets.all(40.0),
+              child: Column(
+                
+                children: [
+                  // Imagem que ocupa a tela de login + sombreamento
+                  ShaderMask( 
+                    shaderCallback: (rect) {
+                      return const LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [Colors.white, Colors.transparent],
+                      ).createShader(Rect.fromLTRB(0, 0, rect.width, rect.height));
+                    },
+                            
+                    child: Image.asset("lib/images/image_sagfam.png")
 
-              child: Form(
+                  ),
 
-                // Identifica o formulário
-                key: formulario1,
+                  // Campos de usuário e senha
+                  const SizedBox(
+                    height: 0,
+                  ),
 
-                // Campos de usuário e senha
-                child: Column(
-                  children: [
-                    const SizedBox(
-                      height: 25,
-                    ),
-
-                    Text("Bem-Vindo(a)!",
+                  Text(
+                    "Bem-Vindo(a)!",
                     style: TextStyle(
-                      fontSize: 26,
-                    )),
+                        fontSize: 26,
+                    )
+                  ),
 
-                    const SizedBox(
-                      height: 25,
-                    ),
+                  const SizedBox(
+                   height: 25,
+                  ),
 
-                    campoTexto('Usuário', txtUsuario),
-                    const SizedBox(
-                      height: 5,
-                    ),
+                  campoTexto('Usuário', txtUsuario, false),
+                  const SizedBox(
+                    height: 5,
+                  ),
 
-                    campoTexto('Senha', txtSenha),
-                    const SizedBox(
-                      height: 5,
-                    ),
+                  campoTexto('Senha', txtSenha, true),
+                  const SizedBox(
+                    height: 5,
+                  ),
 
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [botao('Entrar', 100),]
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [botao('Entrar', 100.toDouble()),]
+                  ),
 
-                    const SizedBox(
-                      height: 10,
-                    ),
+                  const SizedBox(
+                    height: 30,
+                  ),
 
-                    Row(
-                      children: [
-                        SizedBox(
-                        width: 250,
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: 280, // ***VER COMO TORNAR VARIÁVEL POR APARELHO - RESPONSIVO
                         height: 40,
 
                         child: ElevatedButton(
                           onPressed: () {
 
                             if (formulario1.currentState!.validate()) {
-                              
+                                  
                               // Recupera os dados informados pelo usuário
                               setState(() {
                                 String usuario;
@@ -134,8 +133,10 @@ class _TelaLoginState extends State<TelaLogin> {
 
                           child: const Text(
                             "Cadastrar-se", 
-                            style: TextStyle(fontSize: 22,
-                                              color: Color.fromARGB(255, 20, 111, 196))
+                            style: TextStyle(
+                              fontSize: 22,
+                              color: Color.fromARGB(255, 20, 111, 196)
+                            )
                           ),
 
                           style: ElevatedButton.styleFrom(
@@ -143,15 +144,14 @@ class _TelaLoginState extends State<TelaLogin> {
                           ),
                         ),
                       )
-                      ]
-                    ),
-                  ],
-                ),
+                    ]
+                  ),
+
+                ],
               ),
             ),
           ),
-        ]
-
+        ),
       ),
     );
   }
@@ -159,7 +159,7 @@ class _TelaLoginState extends State<TelaLogin> {
   //
   // CAMPO DE TEXTO
   //
-  campoTexto(entrar, recebeTexto){
+  campoTexto(entrar, recebeTexto, obscuro){
     return SizedBox(
 
       height: 60,
@@ -171,10 +171,9 @@ class _TelaLoginState extends State<TelaLogin> {
           controller: recebeTexto,
 
           // Habilita o teclado numérico
-          keyboardType: TextInputType.number,
 
           // Campo de senha escondida
-          obscureText: true,
+          obscureText: obscuro,
 
           // Número de caracteres
           maxLength: 30,
