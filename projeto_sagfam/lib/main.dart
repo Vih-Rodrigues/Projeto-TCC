@@ -4,6 +4,7 @@
 // Importação de bibliotecas
 import 'package:flutter/material.dart';
 import 'package:projeto_sagfam/telas/TelaLogin.dart';
+import 'package:projeto_sagfam/telas/TelaOracoes.dart';
 
 //
 // FUNÇÃO PRINCIPAL
@@ -25,6 +26,7 @@ void main(List<String> args) {
       initialRoute: 'tela01',
       routes: {
         'tela01' : (context) => const TelaLogin(),
+        'tela02' : (context) => const TelaOracoes(),
       },
     ),
   );

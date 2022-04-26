@@ -2,6 +2,7 @@
 // TELA DE LOGIN
 //
 import 'package:flutter/material.dart';
+import 'TelaOracoes.dart';
 
 class TelaLogin extends StatefulWidget {
   const TelaLogin({ Key? key }) : super(key: key);
@@ -212,6 +213,8 @@ class _TelaLoginState extends State<TelaLogin> {
               String senha;
             });
           }
+
+          Navigator.push(context, MaterialPageRoute(builder: ((context) => TelaOracoes())));
         },
 
         child: Text(
