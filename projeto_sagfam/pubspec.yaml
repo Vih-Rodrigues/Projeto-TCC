@@ -59,6 +59,15 @@ flutter:
 
   assets:
     - lib/images/image_sagfam.png
+    - lib/images/imagem01.png
+    - lib/images/imagem02.png
+    - lib/images/imagem03.png
+    - lib/images/imagem04.png
+    - lib/images/imagem05.png
+    - lib/images/imagem06.png
+    - lib/images/imagem07.png
+    - lib/images/imagem08.png
+    - lib/images/imagem09.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:
