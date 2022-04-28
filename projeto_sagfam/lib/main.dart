@@ -2,10 +2,14 @@
 // Projeto de TCC - Disciplina de PDM
 //
 // Importação de bibliotecas
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 import 'package:projeto_sagfam/telas/TelaLogin.dart';
+import 'package:projeto_sagfam/telas/TelaOracaoSelecionada.dart';
 import 'package:projeto_sagfam/telas/TelaOracoes.dart';
-
+import 'package:projeto_sagfam/telas/MenuLateral.dart';
+import 'package:projeto_sagfam/telas/TelaSobre.dart';
 //
 // FUNÇÃO PRINCIPAL
 //
@@ -27,6 +31,9 @@ void main(List<String> args) {
       routes: {
         'tela01' : (context) => const TelaLogin(),
         'tela02' : (context) => const TelaOracoes(),
+        'menulateral' : (context) => NavDrawer(),
+        'tela03' : (context) => const TelaOracaoSelecionada(),
+        'tela04' : (context) => const TelaSobre(),
       },
     ),
   );
