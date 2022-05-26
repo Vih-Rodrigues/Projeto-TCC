@@ -4,6 +4,8 @@
 
 import 'package:flutter/material.dart';
 
+import 'MenuLateral.dart';
+
 class TelaSobre extends StatefulWidget {
   const TelaSobre({ Key? key }) : super(key: key);
 
@@ -15,15 +17,19 @@ class _TelaSobreState extends State<TelaSobre> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
+      endDrawer: NavDrawer(),
+
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Color.fromRGBO(107, 126, 125, 1)),
         title: Text(
           'Sobre', 
-          style: TextStyle(color: Color.fromARGB(255, 85, 85, 85)),
+          style: TextStyle(color: Color.fromRGBO(107, 114, 126, 1)),
         ),
         backgroundColor: Color.fromRGBO(243, 231, 216, 1),
       ),
 
-      backgroundColor: Color.fromRGBO(107, 126, 125, 1),
+      backgroundColor: Color.fromRGBO(107, 114, 126, 1),
 
       //
       // BODY

@@ -2,7 +2,6 @@
 // Projeto de TCC - Disciplina de PDM
 //
 // Importação de bibliotecas
-import 'dart:js';
 
 import 'package:flutter/material.dart';
 import 'package:projeto_sagfam/telas/TelaLogin.dart';
