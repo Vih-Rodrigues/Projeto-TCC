@@ -23,13 +23,13 @@ class NavDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.calendar_month),
             title: Text('Calendário'),
-            onTap: () => {},
+            onTap: () => {Navigator.pushNamed(context, 'tela06')},
           ),
 
           ListTile(
             leading: Icon(Icons.music_note),
             title: Text('Canções'),
-            onTap: () => {Navigator.of(context).pop()},
+            onTap: () => {Navigator.pushNamed(context, 'tela05')}
           ),
 
           ListTile(

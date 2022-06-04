@@ -4,6 +4,8 @@
 // Importação de bibliotecas
 
 import 'package:flutter/material.dart';
+import 'package:projeto_sagfam/telas/TelaCalendario.dart';
+import 'package:projeto_sagfam/telas/TelaCancoes.dart';
 import 'package:projeto_sagfam/telas/TelaLogin.dart';
 import 'package:projeto_sagfam/telas/TelaOracaoSelecionada.dart';
 import 'package:projeto_sagfam/telas/TelaOracoes.dart';
@@ -33,6 +35,8 @@ void main(List<String> args) {
         'menulateral' : (context) => NavDrawer(),
         'tela03' : (context) => const TelaOracaoSelecionada(),
         'tela04' : (context) => const TelaSobre(),
+        'tela05' : (context) => const TelaCancoes(),
+        'tela06' : (context) => const TelaCalendario()
       },
     ),
   );
