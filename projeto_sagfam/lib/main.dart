@@ -11,10 +11,18 @@ import 'package:projeto_sagfam/telas/TelaOracaoSelecionada.dart';
 import 'package:projeto_sagfam/telas/TelaOracoes.dart';
 import 'package:projeto_sagfam/telas/MenuLateral.dart';
 import 'package:projeto_sagfam/telas/TelaSobre.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
 //
 // FUNÇÃO PRINCIPAL
 //
-void main(List<String> args) {
+void main(List<String> args) async{
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  
   // Inicia a execução do app
   runApp(
     // 'const' indica que o tipo de aplicativo não sofrerá alterações + 'MaterialApp' é utilizado para os padrões de design

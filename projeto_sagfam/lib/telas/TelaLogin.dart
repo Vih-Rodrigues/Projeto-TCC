@@ -3,6 +3,7 @@
 //
 import 'package:flutter/material.dart';
 import 'TelaOracoes.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class TelaLogin extends StatefulWidget {
   const TelaLogin({ Key? key }) : super(key: key);
@@ -10,6 +11,9 @@ class TelaLogin extends StatefulWidget {
   @override
   State<TelaLogin> createState() => _TelaLoginState();
 }
+
+
+
   
 class _TelaLoginState extends State<TelaLogin> {
 
@@ -203,19 +207,24 @@ class _TelaLoginState extends State<TelaLogin> {
       height: 40,
 
       child: ElevatedButton(
+
+
         onPressed: () {
-
-          if (formulario1.currentState!.validate()) {
-            
-            // Recupera os dados informados pelo usuário
-            setState(() {
-              String usuario;
-              String senha;
-            });
-          }
-
-          Navigator.push(context, MaterialPageRoute(builder: ((context) => TelaOracoes())));
+                login(txtUsuario.text, txtSenha.text);
         },
+        // onPressed: () {
+
+        //   if (formulario1.currentState!.validate()) {
+            
+        //     // Recupera os dados informados pelo usuário
+        //     setState(() {
+        //       String usuario;
+        //       String senha;
+        //     });
+        //   }
+
+        //   Navigator.push(context, MaterialPageRoute(builder: ((context) => TelaOracoes())));
+        // },
 
         child: Text(
           entrar, 
@@ -227,6 +236,25 @@ class _TelaLoginState extends State<TelaLogin> {
         ),
       ),
     );
+  }
+
+  void login(email, senha){
+    FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: email, password: senha).then((resultado){
+        Navigator.pushReplacementNamed(
+          context, 'tela02', arguments: resultado.user!.uid,
+        );
+    }).catchError((erro){
+      var mensagem = '';
+      if (erro.code == 'user-not-found'){mensagem = 'ERRO: Usuário não encontrado.';
+      }else if (erro.code == 'wrong-password'){mensagem = 'ERRO: Senha incorreta.';
+      }else if (erro.code == 'invalid-email'){mensagem = 'ERRO: Email inválido.';
+      }else{ mensagem = 'ERRO: ${erro.message}';}
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('$mensagem'), duration: Duration(seconds: 2)
+          )
+        );
+    });
   }
   
 }
