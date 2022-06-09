@@ -116,14 +116,7 @@ class _TelaLoginState extends State<TelaLogin> {
                             child: ElevatedButton(
                               onPressed: () {
 
-                                if (formulario1.currentState!.validate()) {
-                                      
-                                  // Recupera os dados informados pelo usuário
-                                  setState(() {
-                                    String usuario;
-                                    String senha;
-                                  });
-                                }
+                                Navigator.pushNamed(context, 'tela07');
                               },
 
                               child: const Text(
